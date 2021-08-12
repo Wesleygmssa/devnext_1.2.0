@@ -17,6 +17,7 @@
     "sass": "^1.37.5"
   },
   "devDependencies": {
+    "@types/next-auth": "^3.15.0",
     "@types/node": "^16.6.0",
     "@types/react": "^17.0.17",
     "eslint": "7.32.0",
