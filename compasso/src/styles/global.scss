@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --white: #FFFFFF;
+    --gray-900: #121214;
+}
+
+body{
+    background: var(--gray-900);
+    color:var(--white);
+
+}
+
+body, input, textarea, select, button{
+    font: 400 1rem "Roboto", sans-serinf;
+}
+
+button{
+    cursor: pointer;
+}
+
+a{
+    color: inherit; // assumir a cor do elemento q esta por volta dele, elemento pai
+    text-decoration: none;
+}
