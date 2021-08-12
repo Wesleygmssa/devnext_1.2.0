@@ -7,7 +7,7 @@ export default NextAuth({
     Providers.GitHub({
       clientId: "a07771680fab6455939d",
       clientSecret: "318529d04addccf89edd0b018d65ddf03076b898",
-      scope: "read:user,repo",
+      scope: "repo",
     }),
     // ...add more providers here
   ],
