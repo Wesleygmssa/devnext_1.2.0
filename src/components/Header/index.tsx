@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <h1>Logo</h1>
+        <h1>Compasso Uol</h1>
         {/* <nav>
           <a href="">Home</a>
           <a href="">Post</a>

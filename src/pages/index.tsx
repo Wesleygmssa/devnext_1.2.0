@@ -5,7 +5,6 @@ export default function Home() {
       <Head>
         <title>Document</title>
       </Head>
-      <h1>Hello world</h1>
     </>
   );
 }
