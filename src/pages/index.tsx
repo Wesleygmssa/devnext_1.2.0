@@ -16,7 +16,7 @@ export default function Home() {
           </h1>
         </section>
         <img
-          src="https://d335luupugsy2.cloudfront.net/images%2Flanding_page%2F1314146%2Ftopo-email.jpg"
+          src="https://nerdin.com.br/img/empresa/1363.png"
           alt="Image"
           width="500"
         />
