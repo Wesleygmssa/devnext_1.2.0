@@ -26,7 +26,7 @@ yarn dev
 
 - Para utilizar os Endpoints abaixo, você precisará estar autenticado, para isso - você irá utilizar a autenticação do GITHUB:
 
-- Gostaríamos nos entregasse uma aplicação utilizando a api do GITHUB
+- Utilizando a api do GITHUB
 - https://developer.github.com/v3/ consumindo os seguintes endpoints:
 
 - Endpoint user: https://api.github.com/users/NOME_USUARIO
