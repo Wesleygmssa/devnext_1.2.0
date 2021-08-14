@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title {
   font-size: 48px;
   color: #3a3a3a;
@@ -9,11 +15,12 @@
 
 .form {
   margin-top: 40px;
-  max-width: 700px;
+  max-width: 900px;
   display: flex;
 
   input {
     flex: 1;
+    width: 400px;
     height: 70px;
     padding: 0 24px;
     border: 0;
@@ -21,7 +28,6 @@
     border: 1px solid #ccc;
     color: #3a3a3a;
     border: 2px solid #fff;
-    border-right: 0;
 
     // ${(props) => props.hasError && css `
     //     border-color: #c53030;
@@ -33,6 +39,7 @@
   }
 
   button {
+    margin-left: 5px;
     width: 210px;
     height: 70px;
     background: #04d361;
@@ -53,8 +60,9 @@
   max-width: 700px;
 
   a {
+    border-bottom: 1px solid #000;
+
     background: #fff;
-    border-radius: 5px;
     width: 100%;
     padding: 24px;
     display: block;
@@ -64,13 +72,9 @@
     align-items: center;
     transition: transform 0.2s;
 
-    &:hover {
-      transform: translateX(10px);
-    }
-
-    & + a {
-      margin-top: 16px;
-    }
+    // &:hover {
+    //   transform: translateX(10px);
+    // }
 
     img {
       width: 64px;
@@ -97,5 +101,23 @@
       margin-left: auto;
       color: #04d361;
     }
+  }
+}
+
+.repository {
+  display: flex;
+  gap: 10px;
+
+  div {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  span {
+    color: black;
+    border: 1px solid #3d3d4d;
+    padding: 3px 8px;
   }
 }
