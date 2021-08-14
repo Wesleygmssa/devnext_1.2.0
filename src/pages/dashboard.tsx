@@ -21,6 +21,7 @@ interface IRepository {
   name: string;
   stargazers_count: number;
   forks_count: number;
+  html_url: string;
 }
 export default function dashboard() {
   const [username, setUsername] = useState("");
@@ -137,7 +138,12 @@ export default function dashboard() {
               <span id="table" />
               {repositories.map((repository) => (
                 <>
-                  <a key={repository.id}>
+                  <a
+                    href={repository.html_url}
+                    key={repository.id}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <div className={styles.repository}>
                       <strong>{repository.name}</strong>
                       <div>
