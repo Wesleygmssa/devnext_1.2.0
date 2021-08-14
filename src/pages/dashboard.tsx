@@ -16,13 +16,6 @@ interface IUser {
   twitter_username: string;
 }
 
-interface DataProps {
-  id: number;
-  name: string;
-  stargazers_count: number;
-  forks_count: number;
-}
-
 interface IRepository {
   id: number;
   name: string;
