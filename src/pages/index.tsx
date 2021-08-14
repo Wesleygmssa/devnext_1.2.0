@@ -11,8 +11,7 @@ export default function Home() {
         <section className={styles.here}>
           <span>Hey, welcome</span>
           <h1>
-            Buscar por <span>Devs</span>{" "}
-            <p>Veja seus repositórios e o mais acessados.</p>
+            Buscar por <span>Devs</span> <p>Veja seus repositórios.</p>
           </h1>
         </section>
         <img

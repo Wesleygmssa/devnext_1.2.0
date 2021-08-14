@@ -58,7 +58,6 @@ export default function dashboard() {
 
       const profileResponse = await api.get<IUser>(`${username}`);
 
-      // const respstarredResponseonse = await api.get<IUser>(`${username}`);
       if (profileResponse) {
         setUser(profileResponse.data);
       }
@@ -120,8 +119,6 @@ export default function dashboard() {
             </div>
 
             <div>
-              {/* {repositories ? <h2>Repositórios</h2> : ""} */}
-
               {repositories.map((repository) => (
                 <>
                   <a key={repository.id}>

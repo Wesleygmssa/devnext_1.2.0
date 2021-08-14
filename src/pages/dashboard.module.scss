@@ -15,12 +15,13 @@
 
 .form {
   margin-top: 40px;
-  max-width: 900px;
+  max-width: 600px;
+  padding: 0 20px;
+  width: 100%;
   display: flex;
 
   input {
     flex: 1;
-    width: 400px;
     height: 70px;
     padding: 0 24px;
     border: 0;
@@ -40,6 +41,7 @@
 
   button {
     margin-left: 5px;
+    padding: 0 10px;
     width: 210px;
     height: 70px;
     background: #04d361;
@@ -58,6 +60,7 @@
 .respositories {
   margin-top: 80px;
   max-width: 700px;
+  padding: 0 20px;
 
   div {
     margin-top: 4rem;
@@ -137,11 +140,15 @@
 
 .repository {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 
   div {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     margin-left: auto;
     gap: 10px;
   }

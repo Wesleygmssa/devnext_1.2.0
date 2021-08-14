@@ -18,27 +18,31 @@ export function SignInButton() {
   }, [session]);
 
   return session ? (
-    <button
-      type="button"
-      className={styles.signInButton}
-      onClick={() => {
-        signOut();
-      }}
-    >
-      <FaGithub color="#04d361" />
-      {session.user.name}
-      <FiX color="#b8c6f7" className={styles.closeIcon} />
-    </button>
+    <div className={styles.containerButton}>
+      <button
+        type="button"
+        className={styles.signInButton}
+        onClick={() => {
+          signOut();
+        }}
+      >
+        <FaGithub color="#04d361" />
+        {session.user.name}
+        <FiX color="#b8c6f7" className={styles.closeIcon} />
+      </button>
+    </div>
   ) : (
-    <button
-      type="button"
-      className={styles.signInButton}
-      onClick={() => {
-        signIn("github");
-      }}
-    >
-      <FaGithub color="#eba417" />
-      Entrar com GitHub
-    </button>
+    <div className={styles.containerButton}>
+      <button
+        type="button"
+        className={styles.signInButton}
+        onClick={() => {
+          signIn("github");
+        }}
+      >
+        <FaGithub color="#eba417" />
+        Entrar com GitHub
+      </button>
+    </div>
   );
 }

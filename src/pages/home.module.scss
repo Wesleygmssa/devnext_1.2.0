@@ -10,6 +10,16 @@
   img {
     background-color: rgb(170, 92, 24);
   }
+
+  @media (max-width: 850px) {
+    & {
+      justify-content: center;
+      text-align: center;
+    }
+    img {
+      display: none;
+    }
+  }
 }
 
 .here {
