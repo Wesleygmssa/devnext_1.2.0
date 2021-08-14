@@ -143,6 +143,7 @@ export default function dashboard() {
                     key={repository.id}
                     target="_blank"
                     rel="noreferrer"
+                    className={styles.repo}
                   >
                     <div className={styles.repository}>
                       <strong>{repository.name}</strong>

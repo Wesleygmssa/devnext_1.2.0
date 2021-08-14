@@ -13,7 +13,7 @@ export function SignInButton() {
   /**
    *  Verificando se usuário esta autenticado no gitHub
    * @param {*} session retorando um objeto com dados usuário
-   * Ex: nane, email. etc...
+   * Ex: name, email. etc...
    * Fazendo a verificando quando correr uma mudança no session
    */
   useEffect(() => {
