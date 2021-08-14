@@ -35,24 +35,29 @@ export default function dashboard() {
   const [repositories, setRepositories] = useState<IRepository[]>([]);
   const [inputError, setInputError] = useState("");
 
-  async function handleGetRepository(activeRepo) {
-    if (activeRepo) {
+  /**
+   *  Chamada endpoint de acordo o value 
+   * @param {*} value repos ou starred
+   * @param {*} username repos ou starred
+   Endpoint repos: https://api.github.com/users/NOME_USUARIO/@value
+   Endpoint starred: https://api.github.com/users/NOME_USUARIO/@value
+   */
+  async function handleGetRepository(value: string) {
+    if (value) {
       const reposResponse = await api.get<IRepository[]>(
-        `${username}/${activeRepo}`
+        `${username}/${value}`
       );
       setRepositories(reposResponse.data);
     }
   }
 
-  async function handleGetStarred(Starred) {
-    if (Starred) {
-      const reposResponse = await api.get<IRepository[]>(
-        `${username}/${Starred}`
-      );
-      setRepositories(reposResponse.data);
-    }
-  }
-
+  /**
+   *
+   * @function handleSubmit
+   *  Fazendo a primeira chamda api onde,
+   *  encontramos o usuário digitado  @username
+   *  Endpoint user: https://api.github.com/users/ @username
+   */
   const handleSubmit = useCallback(
     async (event: FormEvent) => {
       event.preventDefault();

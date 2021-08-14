@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FaGithub } from "react-icons/fa";
 import { FiX } from "react-icons/fi";
 import { signIn, useSession, signOut } from "next-auth/client";
@@ -9,6 +10,12 @@ export function SignInButton() {
   const [session] = useSession();
   const router = useRouter();
 
+  /**
+   *  Verificando se usuário esta autenticado no gitHub
+   * @param {*} session retorando um objeto com dados usuário
+   * Ex: nane, email. etc...
+   * Fazendo a verificando quando correr uma mudança no session
+   */
   useEffect(() => {
     if (session) {
       router.push("/dashboard");
