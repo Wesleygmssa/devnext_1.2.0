@@ -37,6 +37,7 @@ export default function dashboard() {
 
   /**
    *  Chamada endpoint de acordo o value 
+   * @function handleGetRepository
    * @param {*} value repos ou starred
    * @param {*} username repos ou starred
    Endpoint repos: https://api.github.com/users/NOME_USUARIO/@value
