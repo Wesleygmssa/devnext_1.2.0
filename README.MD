@@ -26,11 +26,18 @@ yarn dev
 
 - Para utilizar os Endpoints abaixo, você precisará estar autenticado, para isso - você irá utilizar a autenticação do GITHUB:
 
+- Gostaríamos nos entregasse uma aplicação utilizando a api do GITHUB
+- https://developer.github.com/v3/ consumindo os seguintes endpoints:
+
+- Endpoint user: https://api.github.com/users/NOME_USUARIO
+- Endpoint repos: https://api.github.com/users/NOME_USUARIO/repos
+- Endpoint starred: https://api.github.com/users/NOME_USUARIO/starred
+
 ### Documentação
 
 - Guia Autenticação: https://docs.github.com/pt/developers/apps/building-oauth-apps
 
--https://docs.github.com/pt/developers/apps/building-oauth-apps/creating-an-oauth-app
+- Criar um aplicativo OAuth: https://docs.github.com/pt/developers/apps/building-oauth-apps/creating-an-oauth-app
 
 ### Configuração de autenticação com GitHub
 
