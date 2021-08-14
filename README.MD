@@ -49,8 +49,8 @@ export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     Providers.GitHub({
-      clientId: "a07771680fab6455939d",
-      clientSecret: "318529d04addccf89edd0b018d65ddf03076b898",
+      clientId: GITHUB_CLIENT_ID,
+      clientSecret: GITHUB_CLIENT_SECRET,
       scope: "read:user,repo",
     }),
 
