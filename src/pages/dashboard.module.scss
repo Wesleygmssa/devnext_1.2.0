@@ -2,6 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .errorInput {
+    color: #c53030;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+    left: -140px;
+    margin-top: 0.3rem;
+  }
 }
 
 .title {

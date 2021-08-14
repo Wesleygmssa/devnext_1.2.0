@@ -33,6 +33,7 @@ export default function dashboard() {
   const [username, setUsername] = useState("");
   const [user, setUser] = useState<IUser>();
   const [repositories, setRepositories] = useState<IRepository[]>([]);
+  const [inputError, setInputError] = useState("");
 
   async function handleGetRepository(activeRepo) {
     if (activeRepo) {
@@ -56,10 +57,20 @@ export default function dashboard() {
     async (event: FormEvent) => {
       event.preventDefault();
 
-      const profileResponse = await api.get<IUser>(`${username}`);
+      if (!username) {
+        setInputError("Digite o autor/nome do repositório ");
+        return;
+      }
 
-      if (profileResponse) {
-        setUser(profileResponse.data);
+      try {
+        const profileResponse = await api.get<IUser>(`${username}`);
+        if (profileResponse) {
+          setUser(profileResponse.data);
+        }
+        setInputError(""); //LIMPANDO A MENSAGEM DE ERRO.
+      } catch (error) {
+        console.log(error);
+        setInputError(" Erro na busca por esse usuário");
       }
     },
     [username]
@@ -72,7 +83,6 @@ export default function dashboard() {
       </Head>
       <main className={styles.container}>
         <h1 className={styles.title}>Explore repositórios no Github</h1>
-
         <form className={styles.form} onSubmit={handleSubmit}>
           <input
             placeholder="Pesquisar usuários"
@@ -81,7 +91,8 @@ export default function dashboard() {
           />
           <button type="submit">Pesquisar</button>
         </form>
-
+        {inputError && <span className={styles.errorInput}>{inputError}</span>}{" "}
+        {/* MOSTRANDO ERRO NA TELA */}
         {user?.name && (
           <div className={styles.respositories}>
             <a key={user?.name} href={`/repositories/${user?.name}`}>
