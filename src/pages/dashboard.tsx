@@ -43,6 +43,15 @@ export default function dashboard() {
     }
   }
 
+  async function handleGetStarred(Starred) {
+    if (Starred) {
+      const reposResponse = await api.get<IRepository[]>(
+        `${username}/${Starred}`
+      );
+      setRepositories(reposResponse.data);
+    }
+  }
+
   const handleSubmit = useCallback(
     async (event: FormEvent) => {
       event.preventDefault();
@@ -102,7 +111,9 @@ export default function dashboard() {
                 to="table"
                 smooth
                 duration={2000}
-                type="submit"
+                onClick={() => {
+                  handleGetRepository("starred");
+                }}
               >
                 Mais visitados
               </LinkScroll>
