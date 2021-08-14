@@ -3,7 +3,7 @@
 </h3>
 
 <p align="center">
-   <img src="dev_ok.gif" >
+   <img src="devs_ok.gif" >
 </p>
 
 ### :computer: How To Run
