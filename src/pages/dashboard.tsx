@@ -27,6 +27,7 @@ export default function dashboard() {
   const [user, setUser] = useState<IUser>();
   const [repositories, setRepositories] = useState<IRepository[]>([]);
   const [inputError, setInputError] = useState("");
+  const [typeRepository, setTypeRepository] = useState("");
 
   /**
    *  Chamada endpoint de acordo o value 
@@ -111,6 +112,7 @@ export default function dashboard() {
                 duration={2000}
                 onClick={() => {
                   handleGetRepository("repos");
+                  setTypeRepository("repos");
                 }}
               >
                 Visualizar Repositórios
@@ -122,6 +124,7 @@ export default function dashboard() {
                 duration={2000}
                 onClick={() => {
                   handleGetRepository("starred");
+                  setTypeRepository("starred");
                 }}
               >
                 Mais visitados
@@ -129,6 +132,9 @@ export default function dashboard() {
             </div>
 
             <div>
+              {typeRepository === "repos" && <h2>Repositórios</h2>}
+              {typeRepository === "starred" && <h2>Mais Visitados</h2>}
+              <span id="table" />
               {repositories.map((repository) => (
                 <>
                   <a key={repository.id}>
@@ -145,7 +151,6 @@ export default function dashboard() {
             </div>
           </div>
         )}
-        <div id="table" />
       </main>
     </>
   );
