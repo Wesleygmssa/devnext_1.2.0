@@ -2,8 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
 import { FormEvent, useCallback, useState } from "react";
-import { FiChevronRight } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 import api from "../services/api";
 import styles from "./dashboard.module.scss";
 
@@ -35,19 +34,20 @@ export default function dashboard() {
   const [user, setUser] = useState<IUser>();
   const [repositories, setRepositories] = useState<IRepository[]>([]);
 
-  console.log(user);
+  async function handleGetRepository(activeRepo) {
+    if (activeRepo) {
+      const reposResponse = await api.get<IRepository[]>(
+        `${username}/${activeRepo}`
+      );
+      setRepositories(reposResponse.data);
+    }
+  }
 
   const handleSubmit = useCallback(
     async (event: FormEvent) => {
       event.preventDefault();
 
       const profileResponse = await api.get<IUser>(`${username}`);
-      const reposResponse = await api.get<IRepository[]>(`${username}/repos`);
-
-      if (reposResponse) {
-        setRepositories(reposResponse.data);
-      }
-      console.log(reposResponse);
 
       // const respstarredResponseonse = await api.get<IUser>(`${username}`);
       if (profileResponse) {
@@ -57,7 +57,6 @@ export default function dashboard() {
     [username]
   );
 
-  async function getUser(user: IUser) {}
   return (
     <>
       <Head>
@@ -86,20 +85,49 @@ export default function dashboard() {
                 <p>{user?.bio}</p>
               </div>
             </a>
+            <div className={styles.groupButton}>
+              <LinkScroll
+                className={styles.button}
+                to="table"
+                smooth
+                duration={2000}
+                onClick={() => {
+                  handleGetRepository("repos");
+                }}
+              >
+                Visualizar Repositórios
+              </LinkScroll>
+              <LinkScroll
+                className={styles.button}
+                to="table"
+                smooth
+                duration={2000}
+                type="submit"
+              >
+                Mais visitados
+              </LinkScroll>
+            </div>
 
-            {repositories.map((repository) => (
-              <a key={repository.id}>
-                <div className={styles.repository}>
-                  <strong>{repository.name}</strong>
-                  <div>
-                    <span>Starts:{repository.stargazers_count}</span>
-                    <span>Forks:{repository.forks_count}</span>
-                  </div>
-                </div>
-              </a>
-            ))}
+            <div>
+              {/* {repositories ? <h2>Repositórios</h2> : ""} */}
+
+              {repositories.map((repository) => (
+                <>
+                  <a key={repository.id}>
+                    <div className={styles.repository}>
+                      <strong>{repository.name}</strong>
+                      <div>
+                        <span>Starts:{repository.stargazers_count}</span>
+                        <span>Forks:{repository.forks_count}</span>
+                      </div>
+                    </div>
+                  </a>
+                </>
+              ))}
+            </div>
           </div>
         )}
+        <div id="table" />
       </main>
     </>
   );
