@@ -63,6 +63,15 @@ export default NextAuth({
 
 ```
 
+### Modo de utilização
+
+```bash
+
+import { signIn, useSession, signOut } from "next-auth/client";
+const [session] = useSession();
+
+```
+
 - Abra [http://localhost:3000](http://localhost:3000) para vizualizar em seu navegador
 
 ## 🤔 Tem alguma feature e quer contribuir?
