@@ -22,6 +22,40 @@ yarn
 yarn dev
 ```
 
+### Criado um aplicativo OAuth:
+
+- Para utilizar os Endpoints abaixo, você precisará estar autenticado, para isso - você irá utilizar a autenticação do GITHUB:
+
+### Documentação
+
+- Guia Autenticação: https://docs.github.com/pt/developers/apps/building-oauth-apps
+
+-https://docs.github.com/pt/developers/apps/building-oauth-apps/creating-an-oauth-app
+
+### Configuração de autenticação com GitHub
+
+```bash
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
+
+export default NextAuth({
+  // Configure one or more authentication providers
+  providers: [
+    Providers.GitHub({
+      clientId: "a07771680fab6455939d",
+      clientSecret: "318529d04addccf89edd0b018d65ddf03076b898",
+      scope: "read:user,repo",
+    }),
+
+    // ...add more providers here
+  ],
+
+  // // A database is optional, but required to persist accounts in a database
+  // database: process.env.DATABASE_URL,
+});
+
+```
+
 - Abra [http://localhost:3000](http://localhost:3000) para vizualizar em seu navegador
 
 ## 🤔 Tem alguma feature e quer contribuir?
