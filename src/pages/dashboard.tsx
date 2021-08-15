@@ -31,7 +31,7 @@ export default function dashboard() {
   const [typeRepository, setTypeRepository] = useState("");
 
   /**
-   *  Chamada endpoint de acordo o value
+   *
    * @function handleGetRepository
    * @param {*} value repos ou starred
    * @param {*} username  login do usuário
@@ -68,7 +68,7 @@ export default function dashboard() {
         if (profileResponse) {
           setUser(profileResponse.data);
         }
-        setInputError(""); //LIMPANDO A MENSAGEM DE ERRO.
+        setInputError("");
       } catch (error) {
         console.log(error);
         setInputError(" Erro na busca por esse usuário");
@@ -88,12 +88,11 @@ export default function dashboard() {
           <input
             placeholder="Pesquisar usuários"
             value={username}
-            onChange={(e) => setUsername(e.target.value)} // evento de mudança
+            onChange={(e) => setUsername(e.target.value)}
           />
           <button type="submit">Pesquisar</button>
         </form>
         {inputError && <span className={styles.errorInput}>{inputError}</span>}{" "}
-        {/* MOSTRANDO ERRO NA TELA */}
         {user?.name && (
           <div className={styles.respositories}>
             <a key={user?.name} href={`/repositories/${user?.name}`}>
