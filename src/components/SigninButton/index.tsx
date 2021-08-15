@@ -14,7 +14,7 @@ export function SignInButton() {
    *  Verificando se usuário esta autenticado no gitHub
    * @param {*} session retorando um objeto com dados usuário
    * Ex: name, email. etc...
-   * Fazendo a verificando quando correr uma mudança no session
+   * @useEffect Fazendo a verificando quando ocorrer uma mudança no @session
    */
   useEffect(() => {
     if (session) {
