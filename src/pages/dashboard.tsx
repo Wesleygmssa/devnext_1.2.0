@@ -36,7 +36,6 @@ export default function dashboard() {
     if (cookie) {
       setUser(JSON.parse(cookie));
     }
-    console.log("teste", cookie);
   }, []);
 
   useEffect(() => {
@@ -44,7 +43,6 @@ export default function dashboard() {
       maxAge: 60 * 60 * 24 * 30, // 30 days expiração
       path: "/", // acesso global
     });
-    setUsername(user?.login);
   }, [user]);
 
   /**
@@ -54,14 +52,18 @@ export default function dashboard() {
    * @param {*} username  login do usuário
    * Endpoint: https://api.github.com/users/username/@value (repos) ou (starred)
    */
-  async function handleGetRepository(value: string) {
-    if (value) {
-      const reposResponse = await api.get<IRepository[]>(
-        `${username}/${value}`
-      );
-      setRepositories(reposResponse.data);
-    }
-  }
+
+  const handleGetRepository = useCallback(
+    async (value: string) => {
+      if (value) {
+        const reposResponse = await api.get<IRepository[]>(
+          `${user?.login}/${value}`
+        );
+        setRepositories(reposResponse.data);
+      }
+    },
+    [user?.login]
+  );
 
   /**
    *
@@ -86,6 +88,7 @@ export default function dashboard() {
           setUser(profileResponse.data);
         }
         setInputError("");
+        setRepositories([]);
       } catch (error) {
         console.log(error);
         setInputError(" Erro na busca por esse usuário");
@@ -149,8 +152,12 @@ export default function dashboard() {
             </div>
             <span id="table" />
             <div>
-              {typeRepository === "repos" && <h2>Repositórios</h2>}
-              {typeRepository === "starred" && <h2>Mais Visitados</h2>}
+              {typeRepository === "repos" && repositories.length > 0 && (
+                <h2>Repositórios</h2>
+              )}
+              {typeRepository === "starred" && repositories.length > 0 && (
+                <h2>Mais Visitados</h2>
+              )}
 
               {repositories.map((repository) => (
                 <>
