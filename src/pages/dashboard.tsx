@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @next/next/no-img-element */
 import Head from "next/head";
-import { FormEvent, useCallback, useState } from "react";
+import { FormEvent, useCallback, useEffect, useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
 import api from "../_services/api";
 import styles from "../styles/dashboard.module.scss";
+import { setCookie, parseCookies } from "nookies";
 
 interface IUser {
   avatar_url: string;
@@ -25,10 +26,26 @@ interface IRepository {
 }
 export default function dashboard() {
   const [username, setUsername] = useState("");
-  const [user, setUser] = useState<IUser>();
   const [repositories, setRepositories] = useState<IRepository[]>([]);
   const [inputError, setInputError] = useState("");
   const [typeRepository, setTypeRepository] = useState("");
+  const [user, setUser] = useState<IUser>();
+
+  useEffect(() => {
+    const { "GithubExplorer.user": cookie } = parseCookies();
+    if (cookie) {
+      setUser(JSON.parse(cookie));
+    }
+    console.log("teste", cookie);
+  }, []);
+
+  useEffect(() => {
+    setCookie(undefined, "GithubExplorer.user", JSON.stringify(user), {
+      maxAge: 60 * 60 * 24 * 30, // 30 days expiração
+      path: "/", // acesso global
+    });
+    setUsername(user?.login);
+  }, [user]);
 
   /**
    *
