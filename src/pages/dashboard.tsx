@@ -29,12 +29,14 @@ export default function dashboard() {
   const [repositories, setRepositories] = useState<IRepository[]>([]);
   const [inputError, setInputError] = useState("");
   const [typeRepository, setTypeRepository] = useState("");
-  const [user, setUser] = useState<IUser>();
+  const [user, setUser] = useState<IUser>({} as any);
 
   useEffect(() => {
     const { "GithubExplorer.user": cookie } = parseCookies();
     if (cookie) {
       setUser(JSON.parse(cookie));
+    } else {
+      setUser({} as any);
     }
   }, []);
 
@@ -88,6 +90,7 @@ export default function dashboard() {
         }
         setInputError("");
         setRepositories([]);
+        setUsername("");
       } catch (error) {
         console.log(error);
         setInputError(" Erro na busca por esse usuário");
