@@ -4,7 +4,7 @@ import Head from "next/head";
 import { FormEvent, useCallback, useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
 import api from "../services/api";
-import styles from "./dashboard.module.scss";
+import styles from "../styles/dashboard.module.scss";
 
 interface IUser {
   avatar_url: string;
