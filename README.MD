@@ -1,5 +1,5 @@
 <h3 align="center">
- Desafio-compasso-uol - Nextjs
+ Nextjs
 </h3>
 
 <!-- <p align="center">
